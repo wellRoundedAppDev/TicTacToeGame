@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlue"
+    tools:context=".MainActivity" >
+
+    <EditText
+        android:id="@+id/editText_playerName_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="30sp"
+        android:hint="@string/Player_Number_One_Name"
+        android:importantForAutofill="no"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginLeft="@dimen/margin_16"/>
+
+    <EditText
+        android:id="@+id/editText_playerName_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:hint="@string/Player_Number_Two_Name"
+        android:textSize="30sp"
+        android:layout_below="@+id/editText_playerName_1"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginLeft="@dimen/margin_16" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Player_Names_Entered"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:background="@color/colorYellow"
+        android:layout_below="@id/editText_playerName_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_16"
+        android:onClick="playGameButton"/>
+
+
+    <LinearLayout
+        android:id="@+id/gameGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:background="@drawable/button_round_background_pink"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:background="@drawable/button_round_background_pink"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:background="@drawable/button_round_background_pink"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_weight="1"
+                android:background="@drawable/button_round_background_pink"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                style="?android:attr/buttonBarButtonStyle"
+                android:onClick="gameplayButton"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
