@@ -6,11 +6,10 @@ import android.widget.Toast
 import com.example.tictactoegame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    var player1 : String = ""
-    var player2: String = ""
-    var isItPlayerOneTurn = true
-    var numberOfClicks = 0
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var game : Game
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,52 +20,67 @@ class MainActivity : AppCompatActivity() {
 
     fun playGameButton(view: View) {
 
-        player1 = binding.editTextPlayerName1.text.toString()
-        player2 = binding.editTextPlayerName2.text.toString()
-        view.isClickable = false
-        binding.gameGrid.visibility = View.VISIBLE
+        val player1 = binding.editTextPlayerName1.text.toString()
+        val player2 = binding.editTextPlayerName2.text.toString()
+
+        if(fieldsAreNotEmpty(player1, player2)){
+            game = Game(player1, player2, binding)
+            view.isClickable = false
+            binding.gameGrid.visibility = View.VISIBLE
+        }
+
+    }
+
+    private fun fieldsAreNotEmpty(player1: String, player2: String): Boolean {
+
+        if(player1.isEmpty() || player2.isEmpty()){
+
+            Toast.makeText(this, "Fill all fields!!", Toast.LENGTH_LONG).show()
+            return false
+        }
+
+        return true
     }
 
     fun gameplayButton(view: View) {
 
         view.isClickable = false
-        numberOfClicks++
+        game.numberOfClicks++
         printPlayerNameOnButton(view)
-        determineWinner()
-
+        game.determineWinner(applicationContext)
     }
 
-    fun printPlayerNameOnButton(view: View){
+    private fun printPlayerNameOnButton(view: View){
 
-        if(isItPlayerOneTurn){
+        if(game.isItPlayerOneTurn){
 
             when (view.id) {
                 R.id.button1 -> {
-                    binding.button1.text = player1
+                    binding.button1.text = game.player1
                 }
                 R.id.button2 -> {
-                    binding.button2.text = player1
+                    binding.button2.text = game.player1
                 }
                 R.id.button3 -> {
-                    binding.button3.text = player1
+                    binding.button3.text = game.player1
                 }
                 R.id.button4 -> {
-                    binding.button4.text = player1
+                    binding.button4.text = game.player1
                 }
                 R.id.button5 -> {
-                    binding.button5.text = player1
+                    binding.button5.text = game.player1
                 }
                 R.id.button6 -> {
-                    binding.button6.text = player1
+                    binding.button6.text = game.player1
                 }
                 R.id.button7 -> {
-                    binding.button7.text = player1
+                    binding.button7.text = game.player1
                 }
                 R.id.button8 -> {
-                    binding.button8.text = player1
+                    binding.button8.text = game.player1
                 }
                 R.id.button9 -> {
-                    binding.button9.text = player1
+                    binding.button9.text = game.player1
                 }
             }
 
@@ -75,108 +89,39 @@ class MainActivity : AppCompatActivity() {
 
             when (view.id) {
                 R.id.button1 -> {
-                    binding.button1.text = player2
+                    binding.button1.text = game.player2
                 }
                 R.id.button2 -> {
-                    binding.button2.text = player2
+                    binding.button2.text = game.player2
                 }
                 R.id.button3 -> {
-                    binding.button3.text = player2
+                    binding.button3.text = game.player2
                 }
                 R.id.button4 -> {
-                    binding.button4.text = player2
+                    binding.button4.text = game.player2
                 }
                 R.id.button5 -> {
-                    binding.button5.text = player2
+                    binding.button5.text = game.player2
                 }
                 R.id.button6 -> {
-                    binding.button6.text = player2
+                    binding.button6.text = game.player2
                 }
                 R.id.button7 -> {
-                    binding.button7.text = player2
+                    binding.button7.text = game.player2
                 }
                 R.id.button8 -> {
-                    binding.button8.text = player2
+                    binding.button8.text = game.player2
                 }
                 R.id.button9 -> {
-                    binding.button9.text = player2
+                    binding.button9.text = game.player2
                 }
             }
 
         }
     }
 
-    fun determineWinner(){
-
-        if(isItPlayerOneTurn) {
-
-            isItPlayerOneTurn = false
-
-            if ((binding.button1.text == player1) && (binding.button2.text == player1) && (binding.button3.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button1.text == player1) && (binding.button4.text == player1) && (binding.button7.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button1.text == player1) && (binding.button5.text == player1) && (binding.button9.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button4.text == player1) && (binding.button5.text == player1) && (binding.button6.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button7.text == player1) && (binding.button5.text == player1) && (binding.button3.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button7.text == player1) && (binding.button8.text == player1) && (binding.button9.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button2.text == player1) && (binding.button5.text == player1) && (binding.button8.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button3.text == player1) && (binding.button6.text == player1) && (binding.button9.text == player1)) {
-                Toast.makeText(this, player1 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            }
-            else if(numberOfClicks == 9) {
-                Toast.makeText(this, "draw", Toast.LENGTH_LONG).show();
-                finish();
-            }
-
-        }
-        else if(!isItPlayerOneTurn) {
-
-            isItPlayerOneTurn = true
-
-            if ((binding.button1.text == player2) && (binding.button2.text == player2) && (binding.button3.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button1.text == player2) && (binding.button4.text == player2) && (binding.button7.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button1.text == player2) && (binding.button5.text == player2) && (binding.button9.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button4.text == player2) && (binding.button5.text == player2) && (binding.button6.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button7.text == player2) && (binding.button5.text == player2) && (binding.button3.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button7.text == player2) && (binding.button8.text == player2) && (binding.button9.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button2.text == player2) && (binding.button5.text == player2) && (binding.button8.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            } else if ((binding.button3.text == player2) && (binding.button6.text == player2) && (binding.button9.text == player2)) {
-                Toast.makeText(this, player2 + " won", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        }
-
-    }
-
-
-
-
 }
+
+
+
+
